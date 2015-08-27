@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>test619joey</title>
+</head>
+<body>
+<h2>nodejs hw</h2>
+<table id="myTable" border="1">
+</table>
+<br>
+<button onclick="myFunction();" >Try it</button>
+
+<script>
+function myFunction() {
+  var N=window.prompt("Input the Row number n(n>=0)", "0");
+  // alert(M);
+    var res=[];
+    for(var i=1;i<=N;i++){
+      var res1=[];
+      for(var j=1;j<=N;j++){
+        res1.push( (i-1)*N+j );
+      }
+      res.push(res1);
+    }
+    var res2=[];
+    for(var i=0;i<N;i++){
+       res2=res2+res[i]+"<br>";
+    } 
+
+    var row=N;var col=N;
+    var res3=[];
+    var x=0;var y=0;
+
+    var num2=1;
+    while(row!=0 && col!=0){
+      if(row==1){
+          for(var i=0;i<col;i++){
+        res[x][y++]=num2++;       
+    }break;
+    }
+    else if(col==1){
+      for(var i=0;i<row;i++){
+        res[x++][y]=num2++;
+        
+    }break;
+    }
+
+    for(var i=0;i<col-1;i++){
+      res[x][y++]=num2++;   
+    }
+    for(var i=0;i<row-1;i++){
+      res[x++][y]=num2++;
+    }
+    for(var i=0;i<col-1;i++){
+      res[x][y--]=num2++;
+    }
+    for(var i=0;i<row-1;i++){
+      res[x--][y]=num2++;
+    }
+    row-=2;
+    col-=2;
+    x++;y++;
+    } 
+    var table = document.getElementById("myTable");
+    for(var i=0;i<N;i++){
+    var row = table.insertRow(0);
+    for(var j=0;j<N;j++){
+    var cell1 = row.insertCell(j);
+    cell1.innerHTML = res[N-1-i][j];
+
+    r=(255-16)/(N*N);//gradually change color
+    t=Math.floor((res[N-1-i][j])*r+16);
+    hexn=t.toString(16);
+    cell1.style.background ="#"+"AA"+hexn+"FF";
+    
+   }
+  }
+}
+</script>
+</body>
+</html>
